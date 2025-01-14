@@ -1,0 +1,47 @@
+Given a number, reverse it and add it to itself unless it becomes a palindrome or return -1 if the number of iterations becomes more than 5. Return that palindrome number if it becomes a palindrome else, it returns -1.
+
+Examples:
+
+Input: n = 23
+Output: 55 
+Explanation: reverse(23) = 32, then 32+23 = 55 which is a palindrome. 
+
+Input: n = 73
+Output: 121
+Explanation: reverse(73) = 37, then 37+73 = 110 which is not a palindrome, again reverse(110)= 011, then 110+11 = 121 which is a palindrome.
+
+solutions:
+class Solution {
+  public:
+    int reverse(int n)
+  {
+      int temp,number=0;
+       while(n){
+            
+            temp=n%10;
+            number=temp+number*10;
+            n=n/10;
+        }
+        return number;
+  }
+    int isSumPalindrome(int n) {
+int iterations = 0;
+
+        while (iterations <= 5) {
+            int reversed = reverse(n);
+
+            // Check if the number is already a palindrome
+            if (reversed == n) {
+                return n;
+            }
+
+            // Add the number and its reverse
+            n += reversed;
+
+            iterations++;
+        }
+
+        // If no palindrome is found within 5 iterations, return -1
+        return -1;
+    }
+};
