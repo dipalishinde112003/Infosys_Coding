@@ -1,0 +1,52 @@
+Given a number N.Check if it is tidy or not.
+A tidy number is a number whose digits are in non-decreasing order.
+
+Example 1:
+
+Input: 
+1234
+Output:
+1
+Explanation:
+Since 1<2<3<4,therefore the number is tidy.
+
+Example 2:
+
+Input: 
+1243
+Output:
+0
+Explanation:
+4>3, so the number is not tidy.
+
+solution
+class Solution {
+  public:
+    int isTidy(int N) {
+        // code here
+        int current=INT_MAX;
+        int cnt=0;
+        int prev;
+        while(N!=0)
+        {
+            prev =N%10;
+            if(prev <=current)
+            {
+                current =prev;
+                  N=N/10;
+            }
+          else{
+              cnt++;
+             break;
+          }
+            
+        }
+        if(cnt==0)
+        {
+            return 1;
+        }
+        else 
+        return 0;
+      
+    }
+};
